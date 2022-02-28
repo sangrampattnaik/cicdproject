@@ -26,8 +26,6 @@ jobs:
           cd /home/venya
           mkdir cicd -p
           cd cicd
-          git init
-          git remote set-url origin git@github.com:sangrampattnaik/cicdproject.git
           git pull origin main
           virtualenv env
           source env/bin/activate
