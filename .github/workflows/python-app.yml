@@ -24,7 +24,7 @@ jobs:
         port: 22
         script: |
           cd /home/venya
-          mkdir cicd
+          mkdir cicd -p
           cd cicd
           git remote set-url origin git@github.com:sangrampattnaik/cicdproject.git
           git pull origin main
