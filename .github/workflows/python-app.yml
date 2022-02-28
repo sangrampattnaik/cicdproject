@@ -11,9 +11,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.8
@@ -25,3 +23,15 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     
+  deploy:
+    - name: multiple command
+    uses: appleboy/ssh-action@master
+    with:
+      host: ${{ secrets.HOST }}
+      username: ${{ secrets.USERNAME }}
+      key: ${{ secrets.SSH_KEY }}
+      port: ${{ secrets.PORT }}
+      passphrase: ${{ secrets.PASSPHRASE }}
+      script: |
+        cd /home/venya
+        mkdir sangramcic
