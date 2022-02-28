@@ -23,7 +23,7 @@ jobs:
         passphrase: ${{ secrets.PASSPHRASE }}
         port: 22
         script: |
-          cd /home/venya
+          cd /home/venya/venya
           virtualenv env
+          pip install -r requirements.txt
           source env/bin/activate
-          sudo mkdir ysyw
