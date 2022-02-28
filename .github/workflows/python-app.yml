@@ -23,7 +23,11 @@ jobs:
         passphrase: ${{ secrets.PASSPHRASE }}
         port: 22
         script: |
-          cd /home/venya/venya
+          cd /home/venya
+          mkdir cicd
+          cd cicd
+          git remote set-url origin git@github.com:sangrampattnaik/cicdproject.git
           virtualenv env
-          pip install -r requirements.txt
           source env/bin/activate
+          pip install -r requirements.txt
+          
