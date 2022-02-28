@@ -24,4 +24,6 @@ jobs:
         port: 22
         script: |
           cd /home/venya
+          virtualenv env
+          source env/bin/activate
           sudo mkdir ysyw
