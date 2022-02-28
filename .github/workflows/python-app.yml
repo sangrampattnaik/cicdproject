@@ -20,6 +20,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.SSH_KEY }}
+        assphrase: ${{ secrets.PASSPHRASE }}
         port: 22
         script: |
           cd /home/venya
