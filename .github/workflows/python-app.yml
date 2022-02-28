@@ -24,4 +24,4 @@ jobs:
         port: 22
         script: |
           cd /home/venya
-          mkdir ys
+          sudo mkdir ysyw
