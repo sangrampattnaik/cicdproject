@@ -29,6 +29,8 @@ jobs:
           source venv/bin/activate
           pip install -r requirements.txt
           python3 manage.py collectstatic --noinput
+          python3 manage.py makemigrations --noinput
+          python3 manage.py migrate --noinput
           sudo cp -r ./config/supervisor_cicd.conf /etc/supervisor/conf.d/
           supervisorctl reread
           supervisorctl update
