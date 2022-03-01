@@ -1,4 +1,4 @@
-bind = '0.0.0.0:8000'
+bind = '0.0.0.0:7000'
 wokers = 3
 accesslog = './access.log'
 errorlog = './error.log'

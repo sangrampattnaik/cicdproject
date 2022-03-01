@@ -1,6 +1,10 @@
-name: Node.js CD
+name: CICD
 
-on: workflow_dispatch
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ main ]
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -19,10 +23,12 @@ jobs:
         passphrase: ${{ secrets.PASSPHRASE }}
         port: 22
         script: |
-          cd /home/venya
-          mkdir cicd -p
-          cd cicd
+          cd /home/venya/cicd
           git pull origin main
-          virtualenv env
-          source env/bin/activate
+          virtualenv venv
+          source venv/bin/activate
           pip install -r requirements.txt
+          python3 manage.py collectstatic --noinput
+          sudo cp -r ./config/supervisor_cicd.conf /etc/supervisor/conf.d/
+          sudo service supervisor restart
+
