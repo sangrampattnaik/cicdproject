@@ -18,7 +18,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-5-6hv%^rlm2^2_*6^_py5kzw!jwi=&j_a9^1ag1c=2uzzy%mxc'
 
@@ -27,6 +28,19 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+
+if not DEBUG:
+    sentry_sdk.init(
+        dsn="https://4321bbaae0f349a6b27480f6eeaac790@o554080.ingest.sentry.io/6123089",
+        integrations=[DjangoIntegration()],
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for performance monitoring.
+        # We recommend adjusting this value in production.
+        traces_sample_rate=1.0,
+        # If you wish to associate users to errors (assuming you are using
+        # django.contrib.auth) you may enable sending PII data.
+        send_default_pii=True,
+    )
 
 # Application definition
 
