@@ -31,15 +31,17 @@ ALLOWED_HOSTS = ['*']
 
 if not DEBUG:
     sentry_sdk.init(
-        dsn="https://4321bbaae0f349a6b27480f6eeaac790@o554080.ingest.sentry.io/6123089",
+        dsn="https://0f99f4f101bf4c88b0205878e3a61a06@o554080.ingest.sentry.io/6236552",
         integrations=[DjangoIntegration()],
+
         # Set traces_sample_rate to 1.0 to capture 100%
         # of transactions for performance monitoring.
         # We recommend adjusting this value in production.
         traces_sample_rate=1.0,
+
         # If you wish to associate users to errors (assuming you are using
         # django.contrib.auth) you may enable sending PII data.
-        send_default_pii=True,
+        send_default_pii=True
     )
 
 # Application definition
